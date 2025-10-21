@@ -9,6 +9,7 @@
 !.yarn/plugins
 !.yarn/releases
 !.yarn/versions
+/vendor
 
 # testing
 /coverage
@@ -29,6 +30,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+*.log
+!/storage/logs/.gitkeep
 
 # env files (can opt-in for committing if needed)
 .env*
@@ -39,11 +42,28 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local files
 local-*
 .claude
 .z-ai-config
 dev.log
 test
 prompt
-
 server.log
+
+# Laravel
+/public/hot
+/public/storage
+/storage/app/public
+/storage/framework/sessions/*
+/storage/framework/views/*
+/storage/framework/cache/data/*
+database/database.sqlite
+!database/.gitkeep
+Homestead.yaml
+Homestead.json
+
+# Docker
+Dockerfile
+.dockerignore
