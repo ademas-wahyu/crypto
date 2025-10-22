@@ -29,9 +29,22 @@
                     <ul class="mt-4 space-y-3">
                         @foreach($trending->take(5) as $crypto)
                             <li class="flex items-center justify-between">
-                                <div>
-                                    <p class="text-sm font-semibold text-gray-900">{{ $crypto->name }}</p>
-                                    <p class="text-xs text-gray-500 uppercase">{{ $crypto->symbol }}</p>
+                                <div class="flex items-center gap-3">
+                                    <div class="relative flex-shrink-0">
+                                        <img
+                                            src="{{ $crypto->logo }}"
+                                            alt="Logo {{ $crypto->name }}"
+                                            class="w-10 h-10 rounded-full border border-gray-200 object-cover bg-white {{ empty($crypto->logo) ? 'hidden' : '' }}"
+                                            onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');"
+                                        >
+                                        <div class="w-10 h-10 rounded-full border border-gray-200 bg-primary-50 text-primary-600 flex items-center justify-center font-semibold uppercase {{ empty($crypto->logo) ? '' : 'hidden' }}">
+                                            {{ strtoupper($crypto->symbol[0] ?? $crypto->name[0]) }}
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-semibold text-gray-900">{{ $crypto->name }}</p>
+                                        <p class="text-xs text-gray-500 uppercase">{{ $crypto->symbol }}</p>
+                                    </div>
                                 </div>
                                 <p class="text-sm font-semibold text-gray-900">
                                     ${{ number_format($crypto->current_price, 2, '.', ',') }}
@@ -47,9 +60,22 @@
                     <ul class="mt-4 space-y-3">
                         @foreach($topGainers->take(5) as $crypto)
                             <li class="flex items-center justify-between">
-                                <div>
-                                    <p class="text-sm font-semibold text-gray-900">{{ $crypto->name }}</p>
-                                    <p class="text-xs text-gray-500 uppercase">{{ $crypto->symbol }}</p>
+                                <div class="flex items-center gap-3">
+                                    <div class="relative flex-shrink-0">
+                                        <img
+                                            src="{{ $crypto->logo }}"
+                                            alt="Logo {{ $crypto->name }}"
+                                            class="w-10 h-10 rounded-full border border-emerald-200 object-cover bg-white {{ empty($crypto->logo) ? 'hidden' : '' }}"
+                                            onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');"
+                                        >
+                                        <div class="w-10 h-10 rounded-full border border-emerald-200 bg-white text-emerald-600 flex items-center justify-center font-semibold uppercase {{ empty($crypto->logo) ? '' : 'hidden' }}">
+                                            {{ strtoupper($crypto->symbol[0] ?? $crypto->name[0]) }}
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-semibold text-gray-900">{{ $crypto->name }}</p>
+                                        <p class="text-xs text-gray-500 uppercase">{{ $crypto->symbol }}</p>
+                                    </div>
                                 </div>
                                 <p class="text-sm font-semibold text-emerald-500">
                                     +{{ number_format($crypto->change_percent_24h, 2) }}%
@@ -65,9 +91,22 @@
                     <ul class="mt-4 space-y-3">
                         @foreach($topLosers->take(5) as $crypto)
                             <li class="flex items-center justify-between">
-                                <div>
-                                    <p class="text-sm font-semibold text-gray-900">{{ $crypto->name }}</p>
-                                    <p class="text-xs text-gray-500 uppercase">{{ $crypto->symbol }}</p>
+                                <div class="flex items-center gap-3">
+                                    <div class="relative flex-shrink-0">
+                                        <img
+                                            src="{{ $crypto->logo }}"
+                                            alt="Logo {{ $crypto->name }}"
+                                            class="w-10 h-10 rounded-full border border-rose-200 object-cover bg-white {{ empty($crypto->logo) ? 'hidden' : '' }}"
+                                            onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');"
+                                        >
+                                        <div class="w-10 h-10 rounded-full border border-rose-200 bg-white text-rose-600 flex items-center justify-center font-semibold uppercase {{ empty($crypto->logo) ? '' : 'hidden' }}">
+                                            {{ strtoupper($crypto->symbol[0] ?? $crypto->name[0]) }}
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-semibold text-gray-900">{{ $crypto->name }}</p>
+                                        <p class="text-xs text-gray-500 uppercase">{{ $crypto->symbol }}</p>
+                                    </div>
                                 </div>
                                 <p class="text-sm font-semibold text-rose-500">
                                     {{ number_format($crypto->change_percent_24h, 2) }}%
@@ -88,6 +127,7 @@
                 'change_24h' => (float) $crypto->change_24h,
                 'change_percent_24h' => (float) $crypto->change_percent_24h,
                 'rank' => $crypto->rank,
+                'logo' => $crypto->logo,
             ])))">
                 <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
                     <div class="relative w-full lg:max-w-xs">
@@ -123,8 +163,17 @@
                                     <td class="py-3 font-semibold text-gray-900" x-text="coin.rank"></td>
                                     <td class="py-3">
                                         <div class="flex items-center gap-3">
-                                            <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-primary-500/20 to-primary-500/10 flex items-center justify-center text-primary-600 font-semibold">
-                                                <span x-text="coin.symbol[0]"></span>
+                                            <div class="relative flex-shrink-0">
+                                                <img
+                                                    :src="coin.logo"
+                                                    :alt="`${coin.name} logo`"
+                                                    class="w-10 h-10 rounded-full border border-gray-200 object-cover bg-white"
+                                                    :class="!coin.logo ? 'hidden' : ''"
+                                                    @error="coin.logo = ''"
+                                                >
+                                                <div class="w-10 h-10 rounded-full border border-gray-200 bg-primary-50 text-primary-600 flex items-center justify-center font-semibold uppercase" :class="coin.logo ? 'hidden' : ''">
+                                                    <span x-text="coin.symbol[0]"></span>
+                                                </div>
                                             </div>
                                             <div>
                                                 <p class="font-semibold text-gray-900" x-text="coin.name"></p>

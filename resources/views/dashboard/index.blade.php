@@ -40,8 +40,18 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center">
-                            <span class="text-2xl font-semibold">{{ $featuredCrypto->symbol[0] }}</span>
+                        <div class="flex-shrink-0">
+                            <div class="relative">
+                                <img
+                                    src="{{ $featuredCrypto->logo }}"
+                                    alt="Logo {{ $featuredCrypto->name }}"
+                                    class="w-16 h-16 rounded-full border border-white/30 object-cover bg-white/10 {{ empty($featuredCrypto->logo) ? 'hidden' : '' }}"
+                                    onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');"
+                                >
+                                <div class="w-16 h-16 rounded-full border border-white/30 bg-white/10 flex items-center justify-center text-2xl font-semibold uppercase {{ empty($featuredCrypto->logo) ? '' : 'hidden' }}">
+                                    {{ strtoupper($featuredCrypto->symbol[0] ?? $featuredCrypto->name[0]) }}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 @endif
@@ -158,10 +168,23 @@
                             @foreach($trendingCryptos as $crypto)
                                 <div class="p-4 border border-gray-200 rounded-xl hover:border-primary-200 transition-colors">
                                     <div class="flex items-start justify-between">
-                                        <div>
-                                            <p class="text-sm text-gray-500">Rank #{{ $crypto->rank }}</p>
-                                            <p class="font-semibold text-gray-900">{{ $crypto->name }}</p>
-                                            <p class="text-xs text-gray-500 uppercase">{{ $crypto->symbol }}</p>
+                                        <div class="flex items-start gap-3">
+                                            <div class="relative flex-shrink-0">
+                                                <img
+                                                    src="{{ $crypto->logo }}"
+                                                    alt="Logo {{ $crypto->name }}"
+                                                    class="w-10 h-10 rounded-full border border-gray-200 object-cover bg-white {{ empty($crypto->logo) ? 'hidden' : '' }}"
+                                                    onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');"
+                                                >
+                                                <div class="w-10 h-10 rounded-full border border-gray-200 bg-primary-50 text-primary-600 flex items-center justify-center font-semibold uppercase {{ empty($crypto->logo) ? '' : 'hidden' }}">
+                                                    {{ strtoupper($crypto->symbol[0] ?? $crypto->name[0]) }}
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <p class="text-sm text-gray-500">Rank #{{ $crypto->rank }}</p>
+                                                <p class="font-semibold text-gray-900">{{ $crypto->name }}</p>
+                                                <p class="text-xs text-gray-500 uppercase">{{ $crypto->symbol }}</p>
+                                            </div>
                                         </div>
                                         <span class="text-xs bg-primary-50 text-primary-600 px-2 py-1 rounded-full">Volume</span>
                                     </div>
@@ -184,7 +207,23 @@
                             @foreach($topGainers as $crypto)
                                 <div class="p-4 border border-emerald-100 rounded-xl bg-emerald-50/50">
                                     <div class="flex items-center justify-between">
-                                        <p class="font-semibold text-gray-900">{{ $crypto->name }}</p>
+                                        <div class="flex items-center gap-3">
+                                            <div class="relative flex-shrink-0">
+                                                <img
+                                                    src="{{ $crypto->logo }}"
+                                                    alt="Logo {{ $crypto->name }}"
+                                                    class="w-10 h-10 rounded-full border border-emerald-200 object-cover bg-white {{ empty($crypto->logo) ? 'hidden' : '' }}"
+                                                    onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');"
+                                                >
+                                                <div class="w-10 h-10 rounded-full border border-emerald-200 bg-white text-emerald-600 flex items-center justify-center font-semibold uppercase {{ empty($crypto->logo) ? '' : 'hidden' }}">
+                                                    {{ strtoupper($crypto->symbol[0] ?? $crypto->name[0]) }}
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <p class="font-semibold text-gray-900">{{ $crypto->name }}</p>
+                                                <p class="text-xs text-gray-500 uppercase">{{ $crypto->symbol }}</p>
+                                            </div>
+                                        </div>
                                         <span class="text-xs text-emerald-600 bg-white px-2 py-0.5 rounded-full uppercase">{{ $crypto->symbol }}</span>
                                     </div>
                                     <p class="mt-3 text-lg font-semibold text-gray-900">
@@ -204,7 +243,23 @@
                             @foreach($topLosers as $crypto)
                                 <div class="p-4 border border-rose-100 rounded-xl bg-rose-50/60">
                                     <div class="flex items-center justify-between">
-                                        <p class="font-semibold text-gray-900">{{ $crypto->name }}</p>
+                                        <div class="flex items-center gap-3">
+                                            <div class="relative flex-shrink-0">
+                                                <img
+                                                    src="{{ $crypto->logo }}"
+                                                    alt="Logo {{ $crypto->name }}"
+                                                    class="w-10 h-10 rounded-full border border-rose-200 object-cover bg-white {{ empty($crypto->logo) ? 'hidden' : '' }}"
+                                                    onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');"
+                                                >
+                                                <div class="w-10 h-10 rounded-full border border-rose-200 bg-white text-rose-600 flex items-center justify-center font-semibold uppercase {{ empty($crypto->logo) ? '' : 'hidden' }}">
+                                                    {{ strtoupper($crypto->symbol[0] ?? $crypto->name[0]) }}
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <p class="font-semibold text-gray-900">{{ $crypto->name }}</p>
+                                                <p class="text-xs text-gray-500 uppercase">{{ $crypto->symbol }}</p>
+                                            </div>
+                                        </div>
                                         <span class="text-xs text-rose-600 bg-white px-2 py-0.5 rounded-full uppercase">{{ $crypto->symbol }}</span>
                                     </div>
                                     <p class="mt-3 text-lg font-semibold text-gray-900">
