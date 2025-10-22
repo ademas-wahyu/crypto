@@ -131,10 +131,15 @@ class CoinGeckoClient
      */
     private function request(string $endpoint, array $params = []): array
     {
-        $response = Http::baseUrl($this->baseUrl)
+        $request = Http::baseUrl($this->baseUrl)
             ->timeout($this->timeout)
-            ->acceptJson()
-            ->get($endpoint, $params);
+            ->acceptJson();
+
+        if (! empty($this->apiKey)) {
+            $request = $request->withHeaders(['x_cg_pro_api_key' => $this->apiKey]);
+        }
+
+        $response = $request->get($endpoint, $params);
 
         $response->throw();
 
