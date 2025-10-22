@@ -84,11 +84,23 @@
                                 <h2 class="text-lg font-semibold text-gray-900">Grafik Harga {{ $featuredCrypto->name }}</h2>
                                 <p class="text-sm text-gray-500">Data historis simulasi untuk periode pilihan.</p>
                             </div>
+                            @php($chartPeriods = [
+                                ['value' => '1d', 'label' => '1D'],
+                                ['value' => '7d', 'label' => '7D'],
+                                ['value' => '30d', 'label' => '30D'],
+                                ['value' => '90d', 'label' => '90D'],
+                            ])
+
                             <div class="flex items-center gap-2">
-                                <button type="button" @click="period = '1d'" :class="period === '1d' ? 'btn-primary' : 'btn-secondary'">1D</button>
-                                <button type="button" @click="period = '7d'" :class="period === '7d' ? 'btn-primary' : 'btn-secondary'">7D</button>
-                                <button type="button" @click="period = '30d'" :class="period === '30d' ? 'btn-primary' : 'btn-secondary'">30D</button>
-                                <button type="button" @click="period = '90d'" :class="period === '90d' ? 'btn-primary' : 'btn-secondary'">90D</button>
+                                @foreach($chartPeriods as $chartPeriod)
+                                    <button
+                                        type="button"
+                                        @click="period = '{{ $chartPeriod['value'] }}'"
+                                        :class="period === '{{ $chartPeriod['value'] }}' ? 'btn-primary' : 'btn-secondary'"
+                                    >
+                                        {{ $chartPeriod['label'] }}
+                                    </button>
+                                @endforeach
                             </div>
                         </div>
                         <div class="relative mt-6">
