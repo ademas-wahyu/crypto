@@ -51,12 +51,14 @@ class CryptoController extends Controller
         ]);
     }
     
-    public function historical($symbol, $period = '7d')
+    public function historical(Request $request, $symbol)
     {
         $crypto = Cryptocurrency::where('symbol', strtoupper($symbol))
             ->where('is_active', true)
             ->firstOrFail();
-            
+
+        $period = $request->get('period', '7d');
+
         // Generate historical data simulasi
         $data = [];
         $basePrice = $crypto->current_price;
@@ -68,12 +70,12 @@ class CryptoController extends Controller
             '1y' => 365,
             default => 7
         };
-        
+
         for ($i = $days; $i >= 0; $i--) {
             $date = now()->subDays($i);
             $variation = (rand(-500, 500) / 10000) * $basePrice;
             $price = $basePrice + $variation;
-            
+
             $data[] = [
                 'timestamp' => $date->timestamp * 1000,
                 'date' => $date->format('Y-m-d'),
@@ -81,7 +83,7 @@ class CryptoController extends Controller
                 'volume' => rand(1000000, 10000000)
             ];
         }
-        
+
         return response()->json($data);
     }
     
