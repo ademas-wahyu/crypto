@@ -50,9 +50,9 @@ Route::prefix('api')->group(function () {
     Route::get('/crypto/gainers', [CryptoController::class, 'gainers']);
     Route::get('/crypto/losers', [CryptoController::class, 'losers']);
     Route::get('/crypto/search', [CryptoController::class, 'search']);
-    Route::get('/crypto/{symbol}', [CryptoController::class, 'show']);
     Route::get('/crypto/price/{symbol}', [CryptoController::class, 'price']);
     Route::get('/crypto/historical/{symbol}', [CryptoController::class, 'historical']);
+    Route::get('/crypto/{symbol}', [CryptoController::class, 'show']);
     
     // Protected API
     Route::middleware('auth:sanctum')->group(function () {
