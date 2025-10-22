@@ -85,9 +85,9 @@ CryptoPortal adalah platform monitoring dan trading cryptocurrency yang dibangun
    php artisan db:seed --class=CryptocurrencySeeder
    ```
 
-5. **Build assets**
+5. **Jalankan frontend development server**
    ```bash
-   npm run build
+   npm run dev
    ```
 
 6. **Start development server**
@@ -95,10 +95,7 @@ CryptoPortal adalah platform monitoring dan trading cryptocurrency yang dibangun
    php artisan serve
    ```
 
-7. **Start Vite development server** (di terminal terpisah)
-   ```bash
-   npm run dev
-   ```
+> 💡 Catatan: Proyek kini sepenuhnya menggunakan Blade Templates, Alpine.js, dan Tailwind CSS tanpa integrasi Next.js.
 
 ## 📁 Struktur Project
 
