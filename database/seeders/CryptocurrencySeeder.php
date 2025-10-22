@@ -14,6 +14,7 @@ class CryptocurrencySeeder extends Seeder
             [
                 'symbol' => 'BTC',
                 'name' => 'Bitcoin',
+                'coingecko_id' => 'bitcoin',
                 'current_price' => 45000.00,
                 'market_cap' => 878000000000,
                 'volume_24h' => 28000000000,
@@ -25,6 +26,7 @@ class CryptocurrencySeeder extends Seeder
             [
                 'symbol' => 'ETH',
                 'name' => 'Ethereum',
+                'coingecko_id' => 'ethereum',
                 'current_price' => 2450.75,
                 'market_cap' => 294000000000,
                 'volume_24h' => 15000000000,
@@ -36,6 +38,7 @@ class CryptocurrencySeeder extends Seeder
             [
                 'symbol' => 'BNB',
                 'name' => 'Binance Coin',
+                'coingecko_id' => 'binancecoin',
                 'current_price' => 315.40,
                 'market_cap' => 48000000000,
                 'volume_24h' => 1200000000,
@@ -47,6 +50,7 @@ class CryptocurrencySeeder extends Seeder
             [
                 'symbol' => 'SOL',
                 'name' => 'Solana',
+                'coingecko_id' => 'solana',
                 'current_price' => 98.25,
                 'market_cap' => 42000000000,
                 'volume_24h' => 2800000000,
@@ -58,6 +62,7 @@ class CryptocurrencySeeder extends Seeder
             [
                 'symbol' => 'ADA',
                 'name' => 'Cardano',
+                'coingecko_id' => 'cardano',
                 'current_price' => 0.58,
                 'market_cap' => 20000000000,
                 'volume_24h' => 450000000,
@@ -69,6 +74,7 @@ class CryptocurrencySeeder extends Seeder
             [
                 'symbol' => 'XRP',
                 'name' => 'Ripple',
+                'coingecko_id' => 'ripple',
                 'current_price' => 0.62,
                 'market_cap' => 33000000000,
                 'volume_24h' => 1800000000,
@@ -80,6 +86,7 @@ class CryptocurrencySeeder extends Seeder
             [
                 'symbol' => 'DOT',
                 'name' => 'Polkadot',
+                'coingecko_id' => 'polkadot',
                 'current_price' => 7.85,
                 'market_cap' => 10000000000,
                 'volume_24h' => 320000000,
@@ -91,6 +98,7 @@ class CryptocurrencySeeder extends Seeder
             [
                 'symbol' => 'MATIC',
                 'name' => 'Polygon',
+                'coingecko_id' => 'matic-network',
                 'current_price' => 0.92,
                 'market_cap' => 8500000000,
                 'volume_24h' => 420000000,
