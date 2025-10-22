@@ -1,32 +1,34 @@
 {
-    "name": "crypto-portal",
-    "version": "1.0.0",
-    "description": "Crypto Portal dan Dashboard",
-    "private": true,
-    "type": "module",
-    "scripts": {
-        "build": "vite build",
-        "dev": "vite",
-        "watch": "vite build --watch"
-    },
-    "devDependencies": {
-        "@tailwindcss/forms": "^0.5.7",
-        "@tailwindcss/typography": "^0.5.10",
-        "autoprefixer": "^10.4.16",
-        "axios": "^1.6.4",
-        "laravel-vite-plugin": "^1.0.0",
-        "postcss": "^8.4.32",
-        "tailwindcss": "^3.4.0",
-        "vite": "^5.0.10"
-    },
-    "dependencies": {
-        "@headlessui/vue": "^1.7.16",
-        "@heroicons/vue": "^2.0.18",
-        "alpinejs": "^3.13.5",
-        "apexcharts": "^3.45.1",
-        "chart.js": "^4.4.1",
-        "laravel-echo": "^1.15.3",
-        "lodash": "^4.17.21",
-        "pusher-js": "^8.3.0"
-    }
+  "name": "crypto-portal",
+  "version": "1.0.0",
+  "description": "Crypto Portal dan Dashboard",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite",
+    "watch": "vite build --watch",
+    "start": "concurrently \"php artisan serve\" \"npm run dev\""
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.7",
+    "@tailwindcss/typography": "^0.5.10",
+    "autoprefixer": "^10.4.16",
+    "axios": "^1.6.4",
+    "concurrently": "^9.2.1",
+    "laravel-vite-plugin": "^1.0.0",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.4.0",
+    "vite": "^5.0.10"
+  },
+  "dependencies": {
+    "@headlessui/vue": "^1.7.16",
+    "@heroicons/vue": "^2.0.18",
+    "alpinejs": "^3.13.5",
+    "apexcharts": "^3.45.1",
+    "chart.js": "^4.4.1",
+    "laravel-echo": "^1.15.3",
+    "lodash": "^4.17.21",
+    "pusher-js": "^8.3.0"
+  }
 }
