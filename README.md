@@ -78,6 +78,17 @@ CryptoPortal adalah platform monitoring dan trading cryptocurrency yang dibangun
    php artisan key:generate
    ```
 
+   Konfigurasi variabel environment berikut untuk integrasi CoinGecko (nilai default sudah mengarah ke API publik CoinGecko):
+
+   ```ini
+   COINGECKO_API_BASE=https://api.coingecko.com/api/v3
+   COINGECKO_API_TIMEOUT=10
+   COINGECKO_CACHE_TTL_PRICE=30
+   COINGECKO_CACHE_TTL_MARKET=120
+   COINGECKO_CACHE_TTL_HISTORICAL=600
+   COINGECKO_DEFAULT_CURRENCY=usd
+   ```
+
 4. **Database setup**
    ```bash
    touch database/database.sqlite
@@ -150,7 +161,7 @@ crypto-portal/
 ### Public Endpoints
 - `GET /api/crypto` - List all cryptocurrencies
 - `GET /api/crypto/{symbol}` - Get specific crypto data
-- `GET /api/crypto/price/{symbol}` - Get real-time price
+- `GET /api/crypto/price/{symbol}` - Get real-time price (langsung dari CoinGecko)
 - `GET /api/crypto/trending` - Get trending cryptos
 - `GET /api/crypto/search?q={query}` - Search cryptocurrencies
 

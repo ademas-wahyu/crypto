@@ -11,6 +11,7 @@ class Cryptocurrency extends Model
 
     protected $fillable = [
         'symbol',
+        'coingecko_id',
         'name',
         'logo',
         'current_price',
