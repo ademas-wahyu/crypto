@@ -5,6 +5,8 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\API\CryptoController;
 use App\Http\Controllers\API\PortfolioController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MarketController;
 
 // Authentication Routes
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -21,17 +23,15 @@ Route::get('/', function () {
 
 // Protected Routes
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard.index');
-    })->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])
+        ->name('dashboard');
     
     Route::get('/portfolio', function () {
         return view('portfolio.index');
     })->name('portfolio');
     
-    Route::get('/market', function () {
-        return view('market.index');
-    })->name('market');
+    Route::get('/market', [MarketController::class, 'index'])
+        ->name('market');
     
     Route::get('/transactions', function () {
         return view('transactions.index');
