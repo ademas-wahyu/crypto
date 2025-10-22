@@ -12,11 +12,15 @@ class CoinGeckoClient
     private string $baseUrl;
     private int $timeout;
     private string $currency;
+    private ?string $apiKey;
 
     public function __construct()
     {
         $config = config('crypto.coingecko');
-        $this->baseUrl = rtrim($config['base_url'] ?? 'https://api.coingecko.com/api/v3', '/');
+        $this->apiKey = $config['api_key'] ?? null;
+        $this->baseUrl = rtrim(
+            $this->apiKey ? ($config['pro_base_url'] ?? '') : ($config['base_url'] ?? '')
+        , '/');
         $this->timeout = (int) ($config['timeout'] ?? 10);
         $this->currency = strtolower($config['default_currency'] ?? 'usd');
     }
